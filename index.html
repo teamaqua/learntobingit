@@ -26,7 +26,7 @@
       }
       
       .topbar a {
-      text-decoration: underline;
+      text-decoration: none;
       color: white;
       }
       
@@ -47,9 +47,13 @@
       background: url("binglogo.png") repeat scroll 0 -29px transparent;
       }
       
-      ul a {
-      color: #333333;
-      text-decoration: underline;
+      .footer {
+      color:#898994;
+      float:right;
+      }
+      
+      .footer a {
+      color:#898994;
       }
     </style>
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -63,10 +67,35 @@
 
   <body>
 
-<div class="topbar"><strong>Not affiliated or sponsored by Microsoft Bing.</strong> Written by Vinny. <a href="http://github.com/teamaqua/learntobingit">Hosted at GitHub Pages.</a></div>
+
+
+<div class="topbar">
+<div style="border-bottom: 1px solid #BAC3C8;">
+<strong>Not affiliated or sponsored by Microsoft Bing.</strong> Written by Vinny. <a href="http://github.com/teamaqua/learntobingit">Hosted at GitHub Pages.</a>
+</div>
+</div>
  
      
     <div class="container"><!-- Start the page. -->   
+    
+    
+    <!-- Forwarding dialog -->
+<div class="alert alert-error" id="forwardmessage" style="display:none;">
+	<h3>search Bing for answers about anything!</h3>
+	Someone sent you here because they want you to learn to Bing it. Next time you have a 
+	question, just put it into Bing. You will be redirected to a Bing search about 
+	<strong id="forwardertopic">bing</strong> in 15 seconds.
+</div>
+
+
+<!-- For Non-Javascript Enabled Browsers -->
+<noscript>
+	<div class="alert alert-error">
+		<strong>Learn To Bing It requires Javascript for the best experience. </strong>
+		You may need to turn on Javascript or <a target="_blank" href="https://www.google.com/chrome">upgrade to a more recent browser</a>.
+	</div>
+</noscript>
+    
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="row">
@@ -78,66 +107,42 @@
       
       <div class="span2"><h2>learn to </h2><div class="binglogo"></div><h2>it</h2></div>
       <div class="span6">
-      <p>Bing can search so much stuff, from websites, to news, to shopping. Try it out yourself!</p>
+      <p>
+      
+      <input type="text" placeholder="what are you searching for?" class="span3" id="search" />
+      <input class="btn btn-warning btn-large searchbtn" type="submit" value="Search Bing" id="searchbtn" />
+      
+      
+      </p>
       </div>
       
       </div><!-- end row within hero-unit -->
       
-      <!-- This row contains links. -->
-      <div class="row-fluid" style="padding-top:120px;">
-      <div class="span4">
-       <div class="btn-group open">
-          <button class="btn btn-primary btn-large">Bing Search </button>
-          <button data-toggle="dropdown" class="btn btn-primary btn-large dropdown-toggle"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="http://www.bing.com/images">Images</a></li>
-            <li><a href="http://www.bing.com/videos">Videos</a></li>
-            <li><a href="http://www.bing.com/maps">Maps</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="span4">
-       <div class="btn-group open">
-          <button class="btn btn-danger btn-large">Bing Help</button>
-          <button data-toggle="dropdown" class="btn btn-danger btn-large dropdown-toggle"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="http://onlinehelp.microsoft.com/en-us/bing/ff524480.aspx">Effective searching</a></li>
-            <li><a href="http://onlinehelp.microsoft.com/en-us/bing/gg609290.aspx">Search tips</a></li>
-            <li><a href="http://onlinehelp.microsoft.com/en-us/bing/ff808451%28d=lightweight%29.aspx">Advanced searching</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="span4">
-       <div class="btn-group open">
-          <button class="btn btn-info btn-large">Bing Commercials</button>
-          <button data-toggle="dropdown" class="btn btn-info btn-large dropdown-toggle"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="http://www.youtube.com/watch?v=i1AwFY6MuwE">Cure for Search Overload</a></li>
-            <li><a href="http://www.youtube.com/watch?v=sQ7CF5Nf-Ps">A More Beautiful Web...</a></li>
-            <li class="divider"></li>
-            <li><a href="http://www.youtube.com/user/bing?feature=results_main">Bing YouTube channel</a>
-          </ul>
-        </div>
-      </div>
-      
-      </div><!-- End row containing links -->
-        
+
+  
       </div> <!-- End hero-unit -->
       
       </div><!-- End span containing hero-unit -->
       </div><!-- End row containing hero-unit -->
+            
+      <div class="row">
+      <div class="span12">
       
-
+      <div class="footer">
+      Image from NASA's Hubble Space Telescope, <a href="http://www.nasa.gov/multimedia/imagegallery/image_feature_2210.html">spiral galaxy NGC 2683</a>. 
+      </div>
       
-      <hr>
+      </div>
+      </div>
 
-      <footer>
-        <p><a href="http://commons.wikimedia.org/wiki/File:NGC_2683_Spiral_galaxy.jpg">Image from NASA's Hubble Space Telescope, spiral galaxy NGC 2683</a></p>
-      </footer>
 
     </div> <!-- /container -->
+
+
+
+
+
+
 
     <!-- Le javascript
     ================================================== -->
@@ -155,6 +160,99 @@
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+
+	<script type="text/javascript">	
+	
+	function getParameterByName(name) {
+	    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+	    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	}
+	
+	
+	$(document).ready(function(){		
+	
+		
+		
+		
+		var q = getParameterByName("q");
+		if (q != null) {
+			//We need to set up a forward
+			$("div#forwardmessage").show();
+			$("strong#forwardertopic").text(q);
+			if (window.location.hash != "#forwarder") {
+				window.location.hash = "forwarder";
+				var search_url = "http://www.bing.com/search?q=" + escape(q);
+				//We set the timeout to 10 seconds. Shh!
+				setTimeout("window.location.assign(\"" + search_url + "\")", 10000);
+			}
+		}//end if q != null
+		
+		
+		
+		
+		
+		
+		
+		$("#searchbtn").click(function() {
+			
+			var search = $('#search').val();
+			search = $.trim(search);
+			if (search.length < 1) {
+			search = "bing";
+			}
+			var searchurl = "http://learntobingit.com/?q=" + escape(search);
+			$("a#forwarderlink").prop("href", searchurl);
+			$("a#forwarderlink").text(searchurl);
+			$("h3#forwarderlinkshow").text(searchurl);
+			
+			$("#forwarder").modal('show');
+			
+			});//End searchbtn button function
+		
+		
+		
+		
+		});//end document.ready
+		
+	</script>
+
+
+
+
+
+
+
+
+
+<!-- This is the code for the modal used by the forwarder section. -->
+          <div id="forwarder" class="modal hide fade">
+
+            <div class="modal-header">
+              <a class="close" data-dismiss="modal" >&times;</a>
+              <h3>learn to bing it - search</h3>
+            </div>
+            <div class="modal-body">
+              <p>Copy the link below and share with a friend.</p>
+              
+              <h3 id="forwarderlinkshow">http://learntobingit.com/?q=bing</h3>
+              <p>Or you can click here to preview: <a href="http://learntobingit.com/?q=bing" id="forwarderlink">http://learntobingit.com/?q=bing</a></p>
+
+            </div>
+            <div class="modal-footer">
+              <!-- <a href="#" class="btn btn-primary">Search Bing</a> -->
+              <a href="#" class="btn" data-dismiss="modal" >Close</a>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
 
   </body>
 </html>
