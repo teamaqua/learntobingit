@@ -163,6 +163,10 @@
 
 	<script type="text/javascript">	
 	
+	function doQuickBing(json) {
+		//Coming Soon
+	}
+	
 	function getParameterByName(name) {
 	    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
 	    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
@@ -252,7 +256,7 @@
 
 
 
-
+<script src="http://echo.jsontest.com/bing/search/results/here/results.json?callback=doQuickBing"></script>
 
   </body>
 </html>
